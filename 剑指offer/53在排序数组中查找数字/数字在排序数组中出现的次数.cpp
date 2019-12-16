@@ -24,3 +24,24 @@ public:
         return last - first + 1;
     }
 };
+
+// 思路2， 用stl标准库函数
+// lower_bound(first, last, value)
+// 用于有序数组，如果区间[first, last)存在value，则返回指向第一个元素的迭代器
+// 如果区间不存在，便返回“假设这样的元素存在时应该出现的位置”，即返回指向第一个“不小于value”的元素
+// 如果value大于区间内任何一个元素，则返回last
+//
+// upper_bound(first, last, value)
+// 返回“在破坏顺序的情况下，可插入value的最后一个何时位置”
+// 所以，如果在区间存在value，则返回最后一个value的下一个位置
+class Solution {
+public:
+    int GetNumberOfK(vector<int> nums ,int target) {
+        if(nums.empty()) return 0;
+        auto it1 = lower_bound(nums.begin(), nums.end(), target);
+        if (it1 == nums.end()) return 0;
+        if (*it1 != target) return 0;
+        auto it2 = upper_bound(nums.begin(), nums.end(), target);
+        return it2 - it1;
+    }
+};
