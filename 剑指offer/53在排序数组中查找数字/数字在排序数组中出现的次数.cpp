@@ -32,7 +32,7 @@ public:
 // 如果value大于区间内任何一个元素，则返回last
 //
 // upper_bound(first, last, value)
-// 返回“在破坏顺序的情况下，可插入value的最后一个何时位置”
+// 返回“在不破坏顺序的情况下，可插入value的最后一个何时位置”
 // 所以，如果在区间存在value，则返回最后一个value的下一个位置
 class Solution {
 public:
